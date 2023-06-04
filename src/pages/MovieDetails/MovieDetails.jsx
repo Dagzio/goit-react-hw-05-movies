@@ -14,6 +14,8 @@ import {
   InfoItem,
   GoBackButton,
 } from './MovieDetails.styled';
+import { TiZoomIn } from 'react-icons/ti';
+import { WiStars } from 'react-icons/wi';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -24,7 +26,6 @@ const MovieDetails = () => {
   useEffect(() => {
     fetchMovieById(movieId).then(response => setMovieData(response.data));
   }, [movieId]);
-  console.log(movieData);
   return (
     <>
       <GoBackButton to={backLinkHref}>Go Back</GoBackButton>
@@ -54,7 +55,11 @@ const MovieDetails = () => {
               <h3>Genres</h3>
               <GenreList>
                 {movieData.genres?.map(genre => (
-                  <GenreListItem key={genre.id}>{genre.name}</GenreListItem>
+                  <GenreListItem key={genre.id}>
+                    <WiStars />
+                    {genre.name}
+                    <WiStars />
+                  </GenreListItem>
                 ))}
               </GenreList>
             </ListItem>
@@ -64,10 +69,19 @@ const MovieDetails = () => {
       <AdditionalInfo>
         <ul>
           <InfoItem>
-            <InfoLink to={'cast'}>Cast</InfoLink>
+            <p>Additional Information</p>
           </InfoItem>
           <InfoItem>
-            <InfoLink to={'reviews'}>Reviews</InfoLink>
+            <InfoLink to={'cast'}>
+              <TiZoomIn color="#282644" />
+              Cast
+            </InfoLink>
+          </InfoItem>
+          <InfoItem>
+            <InfoLink to={'reviews'}>
+              <TiZoomIn color="#282644" />
+              Reviews
+            </InfoLink>
           </InfoItem>
         </ul>
       </AdditionalInfo>

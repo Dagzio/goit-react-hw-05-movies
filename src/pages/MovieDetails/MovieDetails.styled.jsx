@@ -49,13 +49,16 @@ export const AdditionalInfo = styled.div`
 
 export const InfoItem = styled.li`
   &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  &:first-child {
     margin-bottom: 12px;
   }
 `;
 
 export const InfoLink = styled(Link)`
   text-decoration: none;
-  color: blue;
+  color: #26269e;
 `;
 
 export const GoBackButton = styled(Link)`

@@ -17,10 +17,14 @@ export const fetchMovieById = movieId => {
 
 export const fetchCastOrReviews = (movieId, option) => {
   const { BASE_URL, API_KEY } = searchOptions;
-  return axios.get(`${BASE_URL}movie/${movieId}/${option}?api_key=${API_KEY}`);
+  return axios.get(
+    `${BASE_URL}movie/${movieId}/${option}?api_key=${API_KEY}&page=1`
+  );
 };
 
 export const fetchMovieByName = query => {
   const { BASE_URL, API_KEY } = searchOptions;
-  return axios.get(`${BASE_URL}search/movie?query=${query}&api_key=${API_KEY}`);
+  return axios.get(
+    `${BASE_URL}search/movie?query=${query}&api_key=${API_KEY}&page=1`
+  );
 };

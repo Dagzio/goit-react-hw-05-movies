@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchButton, SearchInput } from './Searchbar.styled';
+import { SearchButton, SearchInput, SearchbarForm } from './Searchbar.styled';
 
 const Searchbar = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -10,10 +10,10 @@ const Searchbar = ({ onSubmit }) => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    onSubmit(searchQuery);
+    onSubmit(searchQuery.trim());
   };
   return (
-    <form onSubmit={handleFormSubmit}>
+    <SearchbarForm onSubmit={handleFormSubmit}>
       <SearchInput
         type="text"
         name="searchQuery"
@@ -24,7 +24,7 @@ const Searchbar = ({ onSubmit }) => {
         required
       />
       <SearchButton type="submit">Search</SearchButton>
-    </form>
+    </SearchbarForm>
   );
 };
 

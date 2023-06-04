@@ -1,6 +1,8 @@
 import { fetchCastOrReviews } from 'Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ReviewsItem } from './Reviews.styled';
+import { AiOutlineComment } from 'react-icons/ai';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -11,7 +13,6 @@ const Reviews = () => {
       setReviews(response.data.results)
     );
   }, [movieId]);
-  console.log(reviews);
 
   return (
     <section>
@@ -19,10 +20,12 @@ const Reviews = () => {
         {reviews.length > 0 ? (
           reviews.map(review => {
             return (
-              <li key={review.id}>
-                <b>Author: {review.author}</b>
+              <ReviewsItem key={review.id}>
+                <b>
+                  Author: {review.author} <AiOutlineComment color="darkblue" />
+                </b>
                 <p>{review.content}</p>
-              </li>
+              </ReviewsItem>
             );
           })
         ) : (

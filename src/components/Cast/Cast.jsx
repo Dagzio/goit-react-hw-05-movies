@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { fetchCastOrReviews } from 'Api';
 import { useParams } from 'react-router-dom';
+import { CastImage, CastListItem, CastText } from './Cast.styled';
+import { SlPeople } from 'react-icons/sl';
+import { VscStarFull } from 'react-icons/vsc';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -11,7 +14,6 @@ const Cast = () => {
       setDataCast(response.data.cast)
     );
   }, [movieId]);
-  console.log(dataCast);
 
   return (
     <section>
@@ -19,20 +21,27 @@ const Cast = () => {
         {dataCast &&
           dataCast.map(cast => {
             return (
-              <li key={cast.id}>
+              <CastListItem key={cast.id}>
                 {cast.profile_path && (
                   <>
-                    <img
+                    <CastImage
                       src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
                       width="140"
                       heigth="240"
                       alt="{cast.name}"
                     />
-                    <p>{cast.name}</p>
-                    <p>Character: {cast.character}</p>
+                    <CastText>
+                      <VscStarFull />
+                      {cast.name}
+                      <VscStarFull />
+                    </CastText>
+
+                    <CastText>
+                      <SlPeople /> Character: {cast.character}
+                    </CastText>
                   </>
                 )}
-              </li>
+              </CastListItem>
             );
           })}
       </ul>

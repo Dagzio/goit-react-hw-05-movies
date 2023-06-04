@@ -29,3 +29,7 @@ export const SearchButton = styled.button`
     background-color: grey;
   }
 `;
+
+export const SearchbarForm = styled.form`
+  margin-bottom: 24px;
+`;
