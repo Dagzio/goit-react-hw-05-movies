@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieById } from 'Api';
 import {
@@ -85,7 +85,9 @@ const MovieDetails = () => {
           </InfoItem>
         </ul>
       </AdditionalInfo>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
